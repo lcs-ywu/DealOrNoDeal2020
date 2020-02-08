@@ -74,9 +74,8 @@ var briefcaseValues = [100, 500, 1_000, 5_000, 10_000, 25_000, 50_000, 100_000, 
 func getBriefcaseOpened(onTurn turn: Int) -> Int {
     
     // STUDENTS: Complete this function
-    var briefCaseNumber = 0
     while true {
-        print("Briefcase opened in turn \(turn) was:")
+        print("Briefcase opened, in turn \(turn), was:")
         guard let givenInput = readLine() else{
             continue
         }
@@ -86,9 +85,8 @@ func getBriefcaseOpened(onTurn turn: Int) -> Int {
         guard intInput > 0, intInput < 11 else {
             continue
         }
-        briefCaseNumber = intInput
         // The statement below can be modified
-        return briefCaseNumber
+        return intInput
     }
 }
 
@@ -100,7 +98,6 @@ for turn in 1...briefcasesOpened {
     
     // STUDENTS: Now that you know what briefcase is opened... what might you do to the array value(s)?
     briefcaseValues[briefcaseOpenedThisTime - 1] = 0
-    print(briefcaseValues)
 }
 
 // STUDENTS: Do any remaining calculations you might need below.
@@ -109,8 +106,29 @@ for value in briefcaseValues {
     sum += value
 }
 let average = sum/(10-briefcasesOpened)
-print(average)
+print("The average is \(average)")
 
+var offer = -1
+while true {
+    print("What was the banker's offer?")
+    guard let bankerOffer = readLine() else {
+        continue
+    }
+    guard let bankerOfferAsInt = Int(bankerOffer) else {
+        continue
+    }
+    guard bankerOfferAsInt > 0 else {
+        continue
+    }
+    offer = bankerOfferAsInt
+    break
+}
+
+if offer > average {
+    print("Deal!")
+}else{
+    print("Not Deal")
+}
 
 
 //
