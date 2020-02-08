@@ -9,7 +9,7 @@
 import Foundation
 
 //
-// INPUT SECTION OF PROGRAM
+// MARK: INPUT SECTION OF PROGRAM
 //
 var briefcasesOpened = -1
 
@@ -67,17 +67,29 @@ var briefcaseValues = [100, 500, 1_000, 5_000, 10_000, 25_000, 50_000, 100_000, 
 //
 // What turn it is
 //
-// OUTPUT / RETURN VALUE:
+// MARK: OUTPUT / RETURN VALUE:
 //
 // An integer between 1 and 10, inclusive
+
 func getBriefcaseOpened(onTurn turn: Int) -> Int {
     
     // STUDENTS: Complete this function
-    
-    
-    // The statement below can be modified
-    return 0
-    
+    var briefCaseNumber = 0
+    while true {
+        print("Briefcase opened in turn \(turn) was:")
+        guard let givenInput = readLine() else{
+            continue
+        }
+        guard let intInput = Int(givenInput) else{
+            continue
+        }
+        guard intInput > 0, intInput < 11 else {
+            continue
+        }
+        briefCaseNumber = intInput
+        // The statement below can be modified
+        return briefCaseNumber
+    }
 }
 
 // Loop and ask what briefcases have been opened
@@ -88,11 +100,16 @@ for turn in 1...briefcasesOpened {
     
     // STUDENTS: Now that you know what briefcase is opened... what might you do to the array value(s)?
     briefcaseValues[briefcaseOpenedThisTime - 1] = 0
-    
+    print(briefcaseValues)
 }
 
 // STUDENTS: Do any remaining calculations you might need below.
-
+var sum = 0
+for value in briefcaseValues {
+    sum += value
+}
+let average = sum/(10-briefcasesOpened)
+print(average)
 
 
 
